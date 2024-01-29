@@ -2,9 +2,12 @@
 import { useState } from "react"
 import { supabase } from "@/lib/supabase"
 import { Input, FormLabel, FormControl, Button, Box } from "@chakra-ui/react";
+import { Router } from "next/router";
 
 
 export default function page() {
+    const router = Router;
+
     const [data, setData] = useState<{
         email: string,
         password: string
@@ -13,26 +16,32 @@ export default function page() {
         password: ''
     })
 
-    const login = async()=>{
-        try{
-            let { data, error } = await supabase
-            .auth.
-            signInWithPassword({
-                email: 'someone@email.com',
-                password: 'RlEeENIKpkPVQJVLaeKm'
-            })
-        }
-        catch(error){
-
-        }
-        
-    }
+   
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setData((prev: any) => ({
             ...prev,
             [name]: value,
         }));
+    }
+
+    const login = async()=>{
+        try{
+            let { data: dataUser, error } = await supabase
+            .auth.
+            signInWithPassword({
+                email: data.email,
+                password: data.password
+            })
+            
+            if(dataUser){
+                console.log('Signed in', dataUser)
+            }
+        }
+        catch(error){
+
+        }
+        
     }
     
     
