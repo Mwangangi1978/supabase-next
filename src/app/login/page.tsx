@@ -1,7 +1,8 @@
 "use client"
 import { useState } from "react"
 import { supabase } from "@/lib/supabase"
-import { Input ,FormLabel,  FormControl, Button} from '@chakra-ui/react'
+import { Input, FormLabel, FormControl, Button, Box } from "@chakra-ui/react";
+
 
 export default function page() {
     const [data, setData] = useState<{
@@ -34,31 +35,54 @@ export default function page() {
         }));
     }
     
+    
 
     return(
-        <div>
-            <FormControl id="email">
-                <FormLabel >First Name</FormLabel>
-                <Input 
-                    placeholder='Basic usage'
-                    name="email"
-                    type="text"
-                    value={data?.email}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            <FormControl id="password">
-                <FormLabel >Password</FormLabel>
-                <Input 
-                    placeholder='Basic usage'
-                    name="password"
-                    type="password"
-                    value={data?.password}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            <Button onClick={login}>Log in</Button>
-            
-        </div>
-    )
+        <Box
+        
+            backgroundSize="cover"
+            backgroundPosition="center"
+            height="100vh"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+           
+        >
+            <Box
+                p={6}
+                borderRadius="md"
+                boxShadow="md"
+                textAlign="center"
+                width={'50vw'}
+            >
+                <FormControl id="email" marginBottom={"10px"}>
+                    <FormLabel textAlign={"center"}>Email</FormLabel>
+                    <Input
+                       
+                        variant='outline'
+                        placeholder="Enter your email"
+                        name="email"
+                        type="text"
+                        value={data.email}
+                        onChange={handleChange}
+                    />
+                </FormControl>
+                <FormControl id="password" mt={4} marginBottom={"10px"}>
+                    <FormLabel textAlign={"center"}>Password</FormLabel>
+                    <Input
+                        
+                        variant='outline'
+                        placeholder="Enter your password"
+                        name="password"
+                        type="password"
+                        value={data.password}
+                        onChange={handleChange}
+                    />
+                </FormControl>
+                <Button onClick={login} mt={6} colorScheme="teal" alignSelf={'center'}>
+                    Log in
+                </Button>
+            </Box>
+        </Box>
+    );
 }
