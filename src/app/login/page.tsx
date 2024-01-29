@@ -5,7 +5,7 @@ import { Input, FormLabel, FormControl, Button, Box } from "@chakra-ui/react";
 import { Router } from "next/router";
 
 
-export default function page() {
+export default function Login() {
     const router = Router;
 
     const [data, setData] = useState<{
@@ -25,24 +25,6 @@ export default function page() {
         }));
     }
 
-    const login = async()=>{
-        try{
-            let { data: dataUser, error } = await supabase
-            .auth.
-            signInWithPassword({
-                email: data.email,
-                password: data.password
-            })
-            
-            if(dataUser){
-                console.log('Signed in', dataUser)
-            }
-        }
-        catch(error){
-
-        }
-        
-    }
     
     
 
@@ -64,33 +46,35 @@ export default function page() {
                 textAlign="center"
                 width={'50vw'}
             >
-                <FormControl id="email" marginBottom={"10px"}>
-                    <FormLabel textAlign={"center"}>Email</FormLabel>
-                    <Input
-                       
-                        variant='outline'
-                        placeholder="Enter your email"
-                        name="email"
-                        type="text"
-                        value={data.email}
-                        onChange={handleChange}
-                    />
-                </FormControl>
-                <FormControl id="password" mt={4} marginBottom={"10px"}>
-                    <FormLabel textAlign={"center"}>Password</FormLabel>
-                    <Input
+                <form action={'/auth/signin'} method="post">
+                    <FormControl id="email" marginBottom={"10px"}>
+                        <FormLabel textAlign={"center"}>Email</FormLabel>
+                        <Input
                         
-                        variant='outline'
-                        placeholder="Enter your password"
-                        name="password"
-                        type="password"
-                        value={data.password}
-                        onChange={handleChange}
-                    />
-                </FormControl>
-                <Button onClick={login} mt={6} colorScheme="teal" alignSelf={'center'}>
-                    Log in
-                </Button>
+                            variant='outline'
+                            placeholder="Enter your email"
+                            name="email"
+                            type="text"
+                            value={data.email}
+                            onChange={handleChange}
+                        />
+                    </FormControl>
+                    <FormControl id="password" mt={4} marginBottom={"10px"}>
+                        <FormLabel textAlign={"center"}>Password</FormLabel>
+                        <Input
+                            
+                            variant='outline'
+                            placeholder="Enter your password"
+                            name="password"
+                            type="password"
+                            value={data.password}
+                            onChange={handleChange}
+                        />
+                    </FormControl>
+                    <Button mt={6} colorScheme="teal" alignSelf={'center'}>
+                        Log in
+                    </Button>
+                </form>
             </Box>
         </Box>
     );

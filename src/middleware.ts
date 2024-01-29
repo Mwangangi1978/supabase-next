@@ -7,16 +7,21 @@ export async function middleware(req: NextRequest){
 
     const supabase = createMiddlewareClient({req, res})
 
-    const{
-        data:{
-            session
-        }
-    } = await supabase.auth.getSession()
+    
+
+    const{ data:{session}, error} = await supabase
+        .auth
+        .getSession()
 
     if(!session){
         return NextResponse.rewrite(new URL('/login', req.url))
     }
-    return res;
+    else{
+        return res;
+       
+
+    }
+        
 }
 
 export const config ={
