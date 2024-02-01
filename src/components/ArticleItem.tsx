@@ -47,7 +47,7 @@ export default function ArticleItem({
       align="center"
       justify="space-between"
       cursor="pointer"
-      _hover={{ bgColor: 'gray.900' }}
+      width={'100%'}
     >
       <Text>{title}</Text>
       <Flex gridGap={1} color={hasVoted ? 'rose.700' : 'white'}>

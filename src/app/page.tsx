@@ -4,11 +4,11 @@ import ArticleItem from "@/components/ArticleItem";
 import { useArticles } from "@/hooks/useArticles";
 import { supabase } from "@/lib/supabase";
 import { useEffect } from "react";
-import { Grid, Container } from "@chakra-ui/react"; // Import Chakra UI components
+import { Flex, Text } from "@chakra-ui/react"; // Import Chakra UI components
 
 
 export default function Home() {
-  /* const { articles, getArticles } = useArticles()
+  const { articles, getArticles } = useArticles()
 
  
 
@@ -26,17 +26,18 @@ export default function Home() {
   useEffect(() => {
     getArticles()
   }, []);
- */
+
   return (
     <>
-    {/* <Container maxW="container.xl" mt={8}>
-      <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={4}>
+    <Text fontSize={'4xl'} fontStyle={'bold'} marginBottom={'20px'} color={'teal'} textAlign={'center'} marginTop={'10px'}>Mwangangi Articles</Text>
+    <Flex gap={4} width={'85vw'} flexDir={'column'} align={'center'} margin={'auto'}>
+      
         {articles.map((article: any, key: number) => (
           <ArticleItem key={key} article={article} />
         ))}
-      </Grid>
-    </Container> */}
-    <div>Logged in</div>
+    </Flex>|
     </>
+    
+    
   )
 }
