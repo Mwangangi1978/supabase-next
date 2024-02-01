@@ -42,7 +42,7 @@ export default function Login() {
           if (dataUser) {
             toast({
                 title: 'Success',
-                description: 'Signed Up Successfully. Welcome!.',
+                description: 'Signed Up Successfully! Check your email to verify your account.',
                 status: 'success',
                 duration: 5000,
                 isClosable: true,
