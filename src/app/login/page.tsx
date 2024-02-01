@@ -40,7 +40,7 @@ export default function Login() {
     
           if (dataUser) {
             toast({
-                title: 'Log in successfully',
+                title: 'Success',
                 description: 'Logged in successfully. Welcome!.',
                 status: 'success',
                 duration: 5000,

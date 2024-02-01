@@ -24,7 +24,7 @@ export default function Reset() {
 
   const confirmPasswords = async () => {
     const { password, confirmPassword } = data;
-    if (password !== confirmPassword) return alert(`Your passwords are incorrect`);
+    if (password !== confirmPassword) return alert(`Your passwords are not the same`);
 
     const { data: resetData, error } = await supabase
       .auth

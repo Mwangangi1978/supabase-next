@@ -5,7 +5,7 @@ createMiddlewareClient
 export async function middleware(req: NextRequest){
     const res = NextResponse.next();
 
-    const publicUrls = ['/reset']
+    const publicUrls = ['/reset','/login']
 
     if (publicUrls.includes(req.nextUrl.pathname)){
         return res
@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest){
         .getSession()
 
     if(!session){
-        return NextResponse.rewrite(new URL('/login', req.url))
+        return NextResponse.rewrite(new URL('/signup', req.url))
     }
     else{
         return res;
